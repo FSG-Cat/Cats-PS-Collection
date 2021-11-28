@@ -10,7 +10,7 @@
 function Show-Main-Menu
 {
      param (
-           [string]$Title = 'Feline Lab Aid Toolkit Version 1.0RC2'
+           [string]$Title = 'Feline Lab Aid Toolkit Version 1.0'
      )
      cls
      Write-Host "================ $Title ================"
