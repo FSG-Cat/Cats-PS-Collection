@@ -1,4 +1,4 @@
-﻿# Self-elevate the script if required
+# Self-elevate the script if required
     if (-Not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] 'Administrator')) {
      if ([int](Get-CimInstance -Class Win32_OperatingSystem | Select-Object -ExpandProperty BuildNumber) -ge 6000) {
       $CommandLine = "-File `"" + $MyInvocation.MyCommand.Path + "`" " + $MyInvocation.UnboundArguments
@@ -10,7 +10,7 @@
 function Show-Main-Menu
 {
      param (
-           [string]$Title = 'Feline Lab Aid Toolkit Version 1.0RC1'
+           [string]$Title = 'Feline Lab Aid Toolkit Version 1.0RC2'
      )
      cls
      Write-Host "================ $Title ================"
@@ -18,8 +18,10 @@ function Show-Main-Menu
      Write-Host "1: Press '1' to apply sensible defaults for host 1."
      Write-Host "2: Press '2' to apply sensible defaults for host 2."
      Write-Host "3: Press '3' to configure new IP adresses."
-     Write-Host "4: Press '4' to disable firewall."
-     Write-Host "5: Press '5' to list interfaces and select interface to work on."
+     Write-Host "4: Press '4' to enable ICMP_Echo."
+     Write-Host "5: Press '5' to enable firewall."
+     Write-Host "6: Press '6' to disable firewall."
+     Write-Host "7: Press '7' to list interfaces and select interface to work on."
      Write-Host "q: Press 'q' to quit."
 }
 #Variable Declarations
@@ -38,8 +40,12 @@ Function Configure_IP {
     New-NetIPAddress -InterfaceIndex $AdapterIndex -IPAddress $IPv4_Address -PrefixLength $CIDR_Notation_PrefixLenght -DefaultGateway $IPv4_Default_Gateway
     cls
 }
+Function Enable_Firewall {Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled True}
 Function Disable_Firewall {Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False}
-
+Function Enable_Allow_ICMP {
+New-NetFirewallRule -DisplayName "Allow inbound ICMPv4" -Direction Inbound -Protocol ICMPv4 -IcmpType 8 -RemoteAddress LocalSubnet -Action Allow -Profile Domain,Public,Private
+New-NetFirewallRule -DisplayName "Allow inbound ICMPv6" -Direction Inbound -Protocol ICMPv6 -IcmpType 8 -RemoteAddress LocalSubnet -Action Allow -Profile Domain,Public,Private
+}
 #Main menu loop
 do
 {
@@ -56,8 +62,14 @@ do
                 Configure_IP
            } '4' {
                 cls
-                Disable_Firewall
+                Enable_Allow_ICMP
            } '5' {
+                cls
+                Enable_Firewall
+           } '6' {
+                cls
+                Disable_Firewall
+           } '7' {
                 cls
                 Get-NetAdapter
                 $AdapterIndex_String = Read-Host "Please select the adapter to work on from the previous list."
