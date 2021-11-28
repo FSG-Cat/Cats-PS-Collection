@@ -43,8 +43,8 @@ Function Configure_IP {
 Function Enable_Firewall {Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled True}
 Function Disable_Firewall {Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False}
 Function Enable_Allow_ICMP {
-New-NetFirewallRule -DisplayName "Allow inbound ICMPv4" -Direction Inbound -Protocol ICMPv4 -IcmpType 8 -RemoteAddress LocalSubnet -Action Allow -Profile Domain,Public,Private
-New-NetFirewallRule -DisplayName "Allow inbound ICMPv6" -Direction Inbound -Protocol ICMPv6 -IcmpType 8 -RemoteAddress LocalSubnet -Action Allow -Profile Domain,Public,Private
+New-NetFirewallRule -DisplayName "Allow inbound ICMPv4" -Direction Inbound -Protocol ICMPv4 -IcmpType 8 -RemoteAddress Any -Action Allow -Profile Domain,Public,Private
+New-NetFirewallRule -DisplayName "Allow inbound ICMPv6" -Direction Inbound -Protocol ICMPv6 -IcmpType 8 -RemoteAddress Any -Action Allow -Profile Domain,Public,Private
 }
 #Main menu loop
 do
