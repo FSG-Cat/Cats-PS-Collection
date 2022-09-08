@@ -1,4 +1,4 @@
-﻿#Global Strings
+#Global Strings
 ([string]$GamePath = 'E:\Steam\steamapps\common\APB Reloaded')
 
 # Main menu, allowing user selection
@@ -7,7 +7,7 @@ function Show-Main-Menu
      param (
            [string]$Title = 'APB Config Tool'
      )
-     cls
+     Clear-Host
      Write-Host "================ $Title ================"
 
      Write-Host "Please Read the quick start guide if first time user."
@@ -26,7 +26,7 @@ Function AutoSprint-Menu {
      param (
            [string]$AutoSprintMenuTitle = 'Auto Sprint Configuration Menu'
      )
-#     cls
+#     Clear-Host
      Write-Host "================ $AutoSprintMenuTitle ================"
 
      Write-Host "Select what Auto Sprint Mode you want to include in your config."
@@ -46,19 +46,19 @@ do
                 ([string]$AutoSprintAndAutoCrouch = 'Selected')
                 ([string]$AutoSprintMode = 'Sprint And Crouch')
                 Copy-Item -Path '.\Configs\Auto Sprint & Hold Crouch\Auto Sprint & Hold Crouch\APBGame' -Destination '.\Application Directory\' -Recurse -Force
-                cls
+                Clear-Host
                 AutoSprint-Menu
            } '2' {
                 ([string]$AutoSprintOnly = 'Selected')
                 ([string]$AutoSprintMode = 'Sprint Only')
                 Copy-Item -Path '.\Configs\Auto Sprint & Hold Crouch\Auto Sprint Only\APBGame' -Destination '.\Application Directory\' -Recurse -Force
-                cls
+                Clear-Host
                 AutoSprint-Menu
            } '3' {
                 ([string]$HoldCrouchOnly = 'Selected')
                 ([string]$AutoSprintMode = 'Crouch Only')
                 Copy-Item -Path '.\Configs\Auto Sprint & Hold Crouch\Hold Crouch Only\APBGame' -Destination '.\Application Directory\' -Recurse -Force
-                cls
+                Clear-Host
                 AutoSprint-Menu
            } 'Ok' {
                 ([string]$AutoSprintMenuInput = 'Ok')
@@ -150,19 +150,19 @@ do
                 ([string]$Ragdolls_All = 'Selected')
                 ([string]$RagdollMode = 'Remove All Ragdolls')
                 Copy-Item -Path '.\Configs\Remove Ragdolls\Remove All Ragdolls\APBGame' -Destination '.\Application Directory\' -Recurse -Force
-                cls
+                Clear-Host
                 Ragdoll-Menu
            } '2' {
                 ([string]$Ragdolls_NPC = 'Selected')
                 ([string]$RagdollMode = 'Remove NPC Ragdolls Only')
                 Copy-Item -Path '.\Configs\Remove Ragdolls\Remove NPC Ragdolls Only\APBGame' -Destination '.\Application Directory\' -Recurse -Force
-                cls
+                Clear-Host
                 Ragdoll-Menu
            } '3' {
                 ([string]$Ragdolls_Players = 'Selected')
                 ([string]$RagdollMode = 'Remove Player Ragdolls Only')
                 Copy-Item -Path '.\Configs\Remove Ragdolls\Remove Player Ragdolls Only\APBGame' -Destination '.\Application Directory\' -Recurse -Force
-                cls
+                Clear-Host
                 Ragdoll-Menu
            } 'Ok' {
                 ([string]$RagdollMenuInput = 'Ok')
@@ -203,49 +203,49 @@ do
            '1' {
                 ([string]$144hzslidefix = 'Selected')
                 Copy-Item -Path '.\Configs\144hz+ Slide Fix\Engine' -Destination '.\Application Directory\' -Recurse -Force
-                cls
+                Clear-Host
                 QuickCFG
            } '2' {
                 AutoSprint-Menu
-                cls
+                Clear-Host
                 QuickCFG
            } '3' {
                 ([string]$Graphics = 'Selected')
                 Copy-Item -Path '.\Configs\Graphics\APBGame' -Destination '.\Application Directory\' -Recurse -Force
-                cls
+                Clear-Host
                 QuickCFG
            } '4' {
                 ([string]$LoadLogin = 'Selected')
-                cls
+                Clear-Host
                 Copy-Item -Path '.\Configs\Loading & Login Screen\APBGame' -Destination '.\Application Directory\' -Recurse -Force
                 QuickCFG
            } '5' {
                 Localization-Menu
-                cls
+                Clear-Host
                 QuickCFG
            } '6' {
                 ([string]$RainbowNades = 'Selected')
                 Copy-Item -Path '.\Configs\Rainbow Concs & Glowing OPGL Nades\APBGame' -Destination '.\Application Directory\' -Recurse -Force
-                cls
+                Clear-Host
                 QuickCFG
            } '7' {
                 ([string]$RemoveAmbientSounds = 'Selected')
-                cls
+                Clear-Host
                 Copy-Item -Path '.\Configs\Remove Ambient Sounds\APBGame' -Destination '.\Application Directory\' -Recurse -Force
                 QuickCFG
            } '8' {
                 ([string]$RemoveBloodParticles = 'Selected')
-                cls
+                Clear-Host
                 Copy-Item -Path '.\Configs\Remove Blood Particles\APBGame' -Destination '.\Application Directory\' -Recurse -Force
                 QuickCFG
            } '9' {
                 ([string]$RemoveNotifications = 'Selected')
                 Copy-Item -Path '.\Configs\Remove Notifications\APBGame' -Destination '.\Application Directory\' -Recurse -Force
-                cls
+                Clear-Host
                 QuickCFG
            } '10' {
                 Ragdoll-Menu
-                cls
+                Clear-Host
                 QuickCFG
            } '11' {
                 ([string]$RemoveGrafitiParticles = 'Selected')
@@ -280,7 +280,7 @@ do
                 ([string]$Localization_Vanilla = '')
                 ([string]$Localization_Alternative1 = '')
                 ([string]$Localization_Alternative2 = '')
-                cls
+                Clear-Host
                 QuickCFG
            } 'e' {
                 ([string]$ConfigMenuInput = 'e')
@@ -342,18 +342,18 @@ do
      switch ($input)
      {
            '1' {
-                cls
+                Clear-Host
                 QuickCFG
            } '2' {
                 ApplyCFG
            } '3' {
-                cls
+                Clear-Host
                 BackupCurrentGame
            } '4' {
-                cls
+                Clear-Host
                 RestoreCurrentGameBackup
            } '5' {
-                cls
+                Clear-Host
                 QuickStartGuide
            } 'q' {
                 return
