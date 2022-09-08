@@ -1,4 +1,4 @@
-﻿#Global Strings
+#Global Strings
 ([string]$GamePath = 'E:\Steam\steamapps\common\APB Reloaded')
 
 # Main menu, allowing user selection
