@@ -46,19 +46,19 @@ do
                 ([string]$AutoSprintAndAutoCrouch = 'Selected')
                 ([string]$AutoSprintMode = 'Sprint And Crouch')
                 Copy-Item -Path '.\Configs\Auto Sprint & Hold Crouch\Auto Sprint & Hold Crouch\APBGame' -Destination '.\Application Directory\' -Recurse -Force
-                cls
+                Clear-Host
                 AutoSprint-Menu
            } '2' {
                 ([string]$AutoSprintOnly = 'Selected')
                 ([string]$AutoSprintMode = 'Sprint Only')
                 Copy-Item -Path '.\Configs\Auto Sprint & Hold Crouch\Auto Sprint Only\APBGame' -Destination '.\Application Directory\' -Recurse -Force
-                cls
+                Clear-Host
                 AutoSprint-Menu
            } '3' {
                 ([string]$HoldCrouchOnly = 'Selected')
                 ([string]$AutoSprintMode = 'Crouch Only')
                 Copy-Item -Path '.\Configs\Auto Sprint & Hold Crouch\Hold Crouch Only\APBGame' -Destination '.\Application Directory\' -Recurse -Force
-                cls
+                Clear-Host
                 AutoSprint-Menu
            } 'Ok' {
                 ([string]$AutoSprintMenuInput = 'Ok')
